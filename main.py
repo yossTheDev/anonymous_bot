@@ -1,5 +1,6 @@
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, updater
+import os
 
 # Bot Messages
 help_message = """Is very easy to use :
@@ -39,7 +40,7 @@ def main():
 
     echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
 
-    updater = Updater('5211534226:AAFd0VBARRIpGOqmFs1Agg0x7h0HBAajkUw')
+    updater = Updater(os.environ['TOKEN'])
 
     # Add command handlers
     updater.dispatcher.add_handler(CommandHandler('help', help))
