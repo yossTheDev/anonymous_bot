@@ -1,0 +1,22 @@
+{
+  "name": "Anonymous Bot",
+  "description": "Simple bot to convert any message in telegram in a anonymous message",
+  "image": "heroku/python",
+  "repository": "https://github.com/yossTheDev/anonymous_bot",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}
