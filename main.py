@@ -21,6 +21,7 @@ welcome_message = """
 
 
 def main():
+  try:
     # Method to answer messages from users
     def echo(update: Update, context: CallbackContext):
         context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
