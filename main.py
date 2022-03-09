@@ -21,9 +21,6 @@ updater = Updater('5211534226:AAFd0VBARRIpGOqmFs1Agg0x7h0HBAajkUw')
 updater.dispatcher.add_handler(CommandHandler('hello', hello))
 updater.dispatcher.add_handler(echo_handler)
 
-updater.start_webhook(listen="0.0.0.0",
-                      port=int(PORT),
-                      url_path=TOKEN)
 updater.bot.setWebhook('https://anonymous4everbot.herokuapp.com/' + "5211534226:AAFd0VBARRIpGOqmFs1Agg0x7h0HBAajkUw")
 
 updater.idle()
