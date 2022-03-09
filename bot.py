@@ -1,17 +1,27 @@
-from telegram import Update
-from telegram.ext import Updater , CommandHandler , CallbackContext
+from telebot import TeleBot
+import os
 
-about_message = """It was created by :     
-[Yoss THE DEV](https://t.me/yossthedev)
+app = TeleBot(__name__)
 
-[GitHub](https://github.com/yossTheDev/anonymous_bot)"""
 
-# About Message
-def about(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(about_message)
-    
-updater = Updater ( os.envirom["TOKEN"])
-updater.dispatcher.add_handler (CommandHandler( 'hello' , hello ))
-updater.start_polling ()
-updater.idle()
+@app.route('/command ?(.*)')
+def example_command(message, cmd):
+    chat_dest = message['chat']['id']
+    msg = "Command Recieved: {}".format(cmd)
+
+    app.send_message(chat_dest, msg)
+
+
+@app.route('(?!/).+')
+def parrot(message):
+   chat_dest = message['chat']['id']
+   user_msg = message['text']
+
+   msg = "Parrot Says: {}".format(user_msg)
+   app.send_message(chat_dest, msg)
+
+
+if __name__ == '__main__':
+    app.config['api_key'] = os.environ['TOKEN'])
+    app.poll(debug=True)
   
