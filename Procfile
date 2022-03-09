@@ -1,1 +1,1 @@
-web: python boy.py
+web: python main.py
