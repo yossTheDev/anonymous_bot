@@ -50,6 +50,7 @@ def main():
 
     updater.start_polling()
     updater.idle()
+    updater.stop()
 
 
 if __name__ == '__main__':
