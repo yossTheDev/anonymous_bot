@@ -49,6 +49,7 @@ def main():
     updater.dispatcher.add_handler(echo_handler)
 
     updater.start_polling()
+    updater.idle()
 
 
 if __name__ == '__main__':
