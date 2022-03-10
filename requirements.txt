@@ -1,3 +1,2 @@
 python-telegram-bot==13.11
-pyTelegramBotAPI
-telebot
+pytelegrambotapi==4.4.0
