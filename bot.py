@@ -1,27 +1,13 @@
-from telebot import TeleBot
-import os
+import telebot
 
-app = TeleBot(__name__)
+bot = telebot.TeleBot(os.environ['TOKEN'])
 
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message):
+	bot.reply_to(message, "Howdy, how are you doing?")
 
-@app.route('/command ?(.*)')
-def example_command(message, cmd):
-    chat_dest = message['chat']['id']
-    msg = "Command Recieved: {}".format(cmd)
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+	bot.reply_to(message, message.text)
 
-    app.send_message(chat_dest, msg)
-
-
-@app.route('(?!/).+')
-def parrot(message):
-   chat_dest = message['chat']['id']
-   user_msg = message['text']
-
-   msg = "Parrot Says: {}".format(user_msg)
-   app.send_message(chat_dest, msg)
-
-
-if __name__ == '__main__':
-    app.config['api_key'] = os.environ['TOKEN'])
-    app.poll(debug=True)
-  
+bot.infinity_polling()
