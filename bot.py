@@ -15,7 +15,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # The token you got from @botfather when you created the bot
-BOT_TOKEN = "TOKEN"
+BOT_TOKEN = os.environ['TOKEN']
 
 # This can be your own ID, or one for a developer group/channel.
 # You can use the /start command of this bot to see your chat id.
