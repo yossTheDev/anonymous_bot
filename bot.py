@@ -16,6 +16,8 @@ logger = logging.getLogger(__name__)
 
 # The token you got from @botfather when you created the bot
 BOT_TOKEN = os.environ['TOKEN']
+TOKEN = os.environ['TOKEN']
+PORT = int(os.environ.get('PORT', '8443'))
 
 # This can be your own ID, or one for a developer group/channel.
 # You can use the /start command of this bot to see your chat id.
@@ -72,12 +74,15 @@ def main() -> None:
     dispatcher.add_error_handler(error_handler)
 
     # Start the Bot
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN,
+                      webhook_url="https://anonymous4everbot.herokuapp.com/" + TOKEN)
+    updater.idle()
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    updater.idle()
 
 
 if __name__ == '__main__':
