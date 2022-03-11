@@ -1,6 +1,15 @@
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, updater
 import os
+import logging
+
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
+)
+
+# Keys
+TOKEN = os.environ['TOKEN']
+PORT = int(os.environ.get('PORT', '8443'))
 
 # Bot Messages
 help_message = """Is very easy to use :
@@ -13,11 +22,11 @@ about_message = """It was created by :
 
 [GitHub](https://github.com/yossTheDev/anonymous_bot)"""
 welcome_message = """
- I can help you to return all the
- messages of your group in anonymous messages 🤫
+I can help you to return all the
+messages of your group in anonymous messages 🤫
  
- press /help to see how to use it
- press /about to learn about me"""
+press /help to see how to use it
+press /about to learn about me"""
 
 
 def main():
@@ -48,7 +57,10 @@ def main():
     updater.dispatcher.add_handler(CommandHandler('about', about))
     updater.dispatcher.add_handler(echo_handler)
 
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN,
+                      webhook_url="https://anonymous4everbot.herokuapp.com/" + TOKEN)
     updater.idle()
 # g
 main()
