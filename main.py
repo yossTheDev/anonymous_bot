@@ -33,8 +33,11 @@ press /about to learn about me"""
 
 
 def test(update: Update, context: CallbackContext) -> None:
-    r = requests.get('https://uvs.ucm.cmw.sld.cu/ ')
-    update.message.reply_text(r.url)
+    try:
+        r = requests.get('https://uvs.ucm.cmw.sld.cu/')
+        update.message.reply_text(r.url)
+    except Exception as e:
+        update.message.reply_text("FAIL")
 
 
 def main():
