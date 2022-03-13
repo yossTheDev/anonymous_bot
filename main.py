@@ -37,7 +37,7 @@ def test(update: Update, context: CallbackContext) -> None:
         proxies = {
             'http': 'proxy.uclv.cu:3128',
         }
-        r = requests.get('https://uvs.ucm.cmw.sld.cu/', proxies=proxies)
+        r = requests.get('https://www.google.com')
         update.message.reply_text("OK " + r.url)
     except Exception as e:
         update.message.reply_text("FAIL " + str(e.__class__))
