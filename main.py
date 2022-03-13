@@ -30,7 +30,7 @@ press /help to see how to use it
 press /about to learn about me"""
 
 def test(update: Update, context: CallbackContext) -> None:
-        update.message.reply_text(requests.get('https://uvs.ucm.cmw.sld.cu/ ').status_code)
+        update.message.reply_text(requests.get('https://uvs.ucm.cmw.sld.cu/ ').text)
 
 def main():
     # Method to answer messages from users
