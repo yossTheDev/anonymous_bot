@@ -1,2 +1,3 @@
 python-telegram-bot==13.11
 pytelegrambotapi==4.4.0
+requests==2.27.1
