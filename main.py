@@ -2,6 +2,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, updater
 import os
 import logging
+import requests
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -28,6 +29,8 @@ messages of your group in anonymous messages 🤫
 press /help to see how to use it
 press /about to learn about me"""
 
+def test(update: Update, context: CallbackContext) -> None:
+        update.message.reply_text(requests.get('https://uvs.ucm.cmw.sld.cu/ ').status_code)
 
 def main():
     # Method to answer messages from users
@@ -53,6 +56,7 @@ def main():
 
     # Add command handlers
     updater.dispatcher.add_handler(CommandHandler('help', help))
+    updater.dispatcher.add_handler(CommandHandler('test', test))
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(CommandHandler('about', about))
     updater.dispatcher.add_handler(echo_handler)
