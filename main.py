@@ -35,7 +35,7 @@ press /about to learn about me"""
 def test(update: Update, context: CallbackContext) -> None:
     try:
         proxies = {
-            'http': 'proxy.uclv.cu:3128',
+            'http': 'proxy.sld.cu:3128',
         }
         r = requests.get('https://uvs.ucm.cmw.sld.cu/', proxies=proxies)
         update.message.reply_text("OK " + r.url)
