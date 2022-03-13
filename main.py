@@ -33,7 +33,7 @@ press /about to learn about me"""
 
 
 def test(update: Update, context: CallbackContext) -> None:
-    r = requests.get('https://uvs.ucm.cmw.sld.cu/ ')
+    r = requests.get('https://www.google.com ')
     update.message.reply_text(r.url)
 
 
