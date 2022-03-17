@@ -32,17 +32,6 @@ press /help to see how to use it
 press /about to learn about me"""
 
 
-def test(update: Update, context: CallbackContext) -> None:
-    try:
-        proxies = {
-            'http': 'proxy.uclv.cu:3128',
-        }
-        r = requests.get('https://uvs.ucm.cmw.sld.cu/', proxies=proxies)
-        update.message.reply_text("OK " + r.url)
-    except Exception as e:
-        update.message.reply_text("FAIL " + str(e.__class__))
-
-
 def main():
     # Method to answer messages from users
     def echo(update: Update, context: CallbackContext):
@@ -67,7 +56,6 @@ def main():
 
     # Add command handlers
     updater.dispatcher.add_handler(CommandHandler('help', help))
-    updater.dispatcher.add_handler(CommandHandler('test', test))
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(CommandHandler('about', about))
     updater.dispatcher.add_handler(echo_handler)
