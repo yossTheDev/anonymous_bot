@@ -21,7 +21,7 @@ Is very easy to use :
 ➡ And see the magic 🎈🎈"""
 about_message = """
 It was created by :     
-[Yoss THE DEV](https://t.me/yossthedev)
+[Yoss THE DEV](https://t.me/anombotup)
 
 [GitHub](https://github.com/yossTheDev/anonymous_bot)"""
 welcome_message = """
