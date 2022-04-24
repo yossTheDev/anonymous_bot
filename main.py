@@ -19,29 +19,19 @@ Is very easy to use :
 ➡ Add me as an administrator to a group               
 ➡ Give me permission to delete messages
 ➡ And see the magic 🎈🎈"""
+
 about_message = """
 It was created by :     
 [Yoss THE DEV](https://t.me/yossthedev)
 
 [GitHub](https://github.com/yossTheDev/anonymous_bot)"""
+
 welcome_message = """
 I can help you to return all the
 messages of your group in anonymous messages 🤫
  
 press /help to see how to use it
 press /about to learn about me"""
-
-
-def test(update: Update, context: CallbackContext) -> None:
-    try:
-        proxies = {
-            'http': 'proxy.uclv.cu:3128',
-        }
-        r = requests.get('https://uvs.ucm.cmw.sld.cu/', proxies=proxies)
-        update.message.reply_text("OK " + r.url)
-    except Exception as e:
-        update.message.reply_text("FAIL " + str(e.__class__))
-
 
 def main():
     # Method to answer messages from users
@@ -67,7 +57,6 @@ def main():
 
     # Add command handlers
     updater.dispatcher.add_handler(CommandHandler('help', help))
-    updater.dispatcher.add_handler(CommandHandler('test', test))
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(CommandHandler('about', about))
     updater.dispatcher.add_handler(echo_handler)
